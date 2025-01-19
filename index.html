@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kunlik mashqlar</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <form>
+            <div>
+                <label for="fileName"> enter file name: 
+                </label>
+                <input type="text" id="fileName" name="fileName">
+            </div>
+            <div>
+                <label for="GrammarVideoLink"> Grammar video link:  
+                </label>
+                <input type="text" id="GrammarVideoLink" name="GrammarVideoLink">
+            </div>
+            <div>
+                <label for="theory"> Theory :  
+                </label>
+                <input type="text" id="theory" name="theory">
+            </div>
+            <div>
+                <label for="vocab"> Vocabulary: 
+                </label>
+                <input type="file" id="vocab" accept="image/*" name="vocabInput" multiple>
+            </div>
+            <div>
+                <label for="grammarBook">Kitob sahifasi va mavzusi:  
+                <input type="text" name="grammarBook" id="grammarInput">
+            </div>
+            <div>
+                <label for="essay">Matn tuzish:  <input type="checkbox" id="matnCheck"></label>
+                <input type="text" name="essay" id="essay">
+            </div>
+            <div >
+                <label for="listeningLink"> Listening link:  <input type="checkbox" id="listeningCheck">
+                </label>
+                <input type="text" id="listeningLink" name="listeningLink">
+            </div>
+        </form>
+        <div class="downloadablePage">
+        <h1 >Day 1</h1>
+
+            <div>
+                <h3>Grammatikadan video : <a id="vidLink" href="" target="_blank">video linki</a></h3>
+                 
+
+                 <h4>Vazifa:</h4>
+                 <ol>
+                    <li>
+                        Videoni ko'rib chiqing, kerakli joyini yozib oling va har doim takrorlab yuring.
+                    </li>
+                 </ol>
+            </div>
+            <div>
+                <h3>Nazariy Grammatika:</h3>
+                 
+                    <p id="theoryPrag"></p>
+
+                 <h4>Vazifa:</h4>
+                 <ol>
+                    <li>
+                        Mabzuni diqqat bilan o'qing,  bir necha marta takrorlang, kerak bo'lsa yodlab oling, yuqorida o'tilgan mavzuni nazariy holati
+                    </li>
+                    <li>
+                        shu mavzu bo'yicha 90 ta gap tuzing 
+                    </li>
+                 </ol>
+            </div>
+          
+            <div>
+                <h3>Lug'at 15 ta</h3>
+                <div id="preview" style="margin-top: 20px;">
+                    
+                </div>
+                <h4>
+                    Vazifalar:
+                </h4>
+                    <ol>
+                        <li>
+                            ushbu lug'atlarni o'z daftaringizga ko'chirib yod oling
+                        </li>
+                        <li>ushbu so'zlarni tepadagi 90 ta gap tuzish vazifasida muntazam foydalaning</li>
+                    </ol>
+            </div>
+            <div>
+                <h3>Grammatika kitobdagi mashqlar: </h3>
+                <h4>
+                    Vazifalar: <i id="grammarBook">{Bugun mavjud emas}</i>
+                </h4>
+                    <p>Ushbu vavzudagi mashqlarni bajaring!</p>
+                  
+            </div>
+
+            <div  id="essaySection">
+                <h3>Matn tuzish:</h3>
+                <p id="essayPrev"></p>
+            </div>
+
+            <div id="listeningSection">
+                <h3>Eshitish mashqi : <a id="lisLink" href="" target="_blank">video linki</a></h3>
+                 
+
+                 <hr>
+                 <h4>Vazifa:</h4>
+                 <ol>
+                    <li>
+                        Bir necha marta eshiting, xotirangizga yoz bolgandek bo'lsin
+                    </li>
+                    <li>Keyin yana bir necha marta eshitish davomida siz ham birga takrorlang gapirishini</li>
+                
+                 </ol>
+            </div>
+        </div>
+        <button type="submit" class="downloadBtn"> download</button>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
