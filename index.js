@@ -18,6 +18,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const downloadButton = document.querySelector(".downloadBtn");
     const theoryInput = document.getElementById('theory')
     const theoryPrag = document.getElementById('theoryPrag')
+    const header = document.getElementById('header')
+
+
+    header.textContent = filenameInput.value
 
     if (!listeningCheck.checked) {
         listeningSection.remove(); 
