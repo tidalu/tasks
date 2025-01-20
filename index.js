@@ -18,10 +18,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const downloadButton = document.querySelector(".downloadBtn");
     const theoryInput = document.getElementById('theory')
     const theoryPrag = document.getElementById('theoryPrag')
-    const header = document.getElementById('header')
+    const headerTitle = document.getElementById('header')
 
 
-    header.textContent = filenameInput.value
+     filenameInput.addEventListener('input', (even) => {
+        headerTitle.innerHTML = even.target.value
+     })
 
     if (!listeningCheck.checked) {
         listeningSection.remove(); 
