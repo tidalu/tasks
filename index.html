@@ -7,123 +7,150 @@
     <title>kunlik mashqlar</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
 </head>
 
 <body>
     <main>
         <form>
             <div>
-                <label for="fileName"> enter file name: 
-                </label>
+                <label for="fileName">Enter file name:</label>
                 <input type="text" id="fileName" name="fileName">
             </div>
-            <div>
-                <label for="GrammarVideoLink"> Grammar video link:  
-                </label>
+            <div id="section1">
+                <label for="GrammarVideoLink">Grammar video link:</label>
                 <input type="text" id="GrammarVideoLink" name="GrammarVideoLink">
+
+                <!-- Link input -->
+                <label for="section1Links">Links (separated by <>):</label>
+                <input type="text" id="section1Links" name="section1Links">
+                
+                <!-- Task input -->
+                <label for="section1Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section1Tasks" name="section1Tasks">
+
             </div>
-            <div>
-                <label for="theory"> Theory :  
-                </label>
+            <div id="section2">
+                <label for="theory">Theory:</label>
                 <input type="text" id="theory" name="theory">
+
+                <!-- Link input -->
+                <label for="section2Links">Links (separated by <>):</label>
+                <input type="text" id="section2Links" name="section2Links">
+
+                <!-- Task input -->
+                <label for="section2Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section2Tasks" name="section2Tasks">
+
             </div>
-            <div>
-                <label for="vocab"> Vocabulary: 
-                </label>
+            <div id="section3">
+                <label for="vocab">Vocabulary:</label>
                 <input type="file" id="vocab" accept="image/*" name="vocabInput" multiple>
+
+                <!-- Link input -->
+                <label for="section3Links">Links (separated by <>):</label>
+                <input type="text" id="section3Links" name="section3Links">
+
+                <!-- Task input -->
+                <label for="section3Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section3Tasks" name="section3Tasks">
+
             </div>
-            <div>
-                <label for="grammarBook">Kitob sahifasi va mavzusi:  
+            <div id="section4">
+                <label for="grammarBook">Kitob sahifasi va mavzusi:</label>
                 <input type="text" name="grammarBook" id="grammarInput">
+
+                <!-- Link input -->
+                <label for="section4Links">Links (separated by <>):</label>
+                <input type="text" id="section4Links" name="section4Links">
+
+                <!-- Task input -->
+                <label for="section4Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section4Tasks" name="section4Tasks">
+
             </div>
-            <div>
-                <label for="essay">Matn tuzish:  <input type="checkbox" id="matnCheck"></label>
+            <div id="section5">
+                <label for="essay">Matn tuzish:</label>
+                <input type="checkbox" id="matnCheck">
                 <input type="text" name="essay" id="essay">
+
+                <!-- Link input -->
+                <label for="section5Links">Links (separated by <>):</label>
+                <input type="text" id="section5Links" name="section5Links">
+
+                <!-- Task input -->
+                <label for="section5Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section5Tasks" name="section5Tasks">
+
             </div>
-            <div >
-                <label for="listeningLink"> Listening link:  <input type="checkbox" id="listeningCheck">
-                </label>
+            <div id="section6">
+                <label for="listeningLink">Listening link:</label>
+                <input type="checkbox" id="listeningCheck">
                 <input type="text" id="listeningLink" name="listeningLink">
+
+                <!-- Link input -->
+                <label for="section6Links">Links (separated by <>):</label>
+                <input type="text" id="section6Links" name="section6Links">
+
+                <!-- Task input -->
+                <label for="section6Tasks">Tasks (separated by <>):</label>
+                <input type="text" id="section6Tasks" name="section6Tasks">
+
             </div>
         </form>
         <div class="downloadablePage">
-        <h1 id="header">Day 1</h1>
-
+            <h1 id="header">Day 1</h1>
             <div>
-                <h3>Grammatikadan video : <a id="vidLink" href="" target="_blank">video linki</a></h3>
-                 
-
-                 <h4>Vazifa:</h4>
-                 <ol>
-                    <li>
-                        Videoni ko'rib chiqing, kerakli joyini yozib oling va har doim takrorlab yuring.
-                    </li>
-                 </ol>
+                <h3>Grammatikadan video: <a id="vidLink" href="" target="_blank">video linki</a></h3>
+                <h4>Linklar</h4>
+                <ul id="section1links"></ul>
+                <h4>Vazifa:</h4>
+                <ol id="section1task"></ol>
             </div>
             <div>
                 <h3>Nazariy Grammatika:</h3>
-                 
-                    <p id="theoryPrag"></p>
-
-                 <h4>Vazifa:</h4>
-                 <ol>
-                    <li>
-                        Mabzuni diqqat bilan o'qing,  bir necha marta takrorlang, kerak bo'lsa yodlab oling, yuqorida o'tilgan mavzuni nazariy holati
-                    </li>
-                    <li>
-                        shu mavzu bo'yicha 90 ta gap tuzing 
-                    </li>
-                 </ol>
+                <p id="theoryPrag"></p>
+                <h4>Linklar</h4>
+                <ul id="section2links"></ul>
+                <h4>Vazifa:</h4>
+                <ol id="section2task"></ol>
             </div>
-          
             <div>
                 <h3>Lug'at 15 ta</h3>
-                <div id="preview" style="margin-top: 20px;">
-                    
-                </div>
-                <h4>
-                    Vazifalar:
-                </h4>
-                    <ol>
-                        <li>
-                            ushbu lug'atlarni o'z daftaringizga ko'chirib yod oling
-                        </li>
-                        <li>ushbu so'zlarni tepadagi 90 ta gap tuzish vazifasida muntazam foydalaning</li>
-                    </ol>
+                <div id="preview" style="margin-top: 20px;"></div>
+                <h4>Linklar</h4>
+                <ul id="section3links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section3task"></ol>
             </div>
             <div>
-                <h3>Grammatika kitobdagi mashqlar: </h3>
-                <h4>
-                    Vazifalar: <i id="grammarBook">{Bugun mavjud emas}</i>
-                </h4>
-                    <p>Ushbu vavzudagi mashqlarni bajaring!</p>
-                  
+                <h3>Grammatika kitobdagi mashqlar:</h3>
+                <h4>Linklar</h4>
+                <ul id="section4links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section4task"></ol>
             </div>
-
-            <div  id="essaySection">
+            <div id="essaySection">
                 <h3>Matn tuzish:</h3>
                 <p id="essayPrev"></p>
+                <h4>Linklar</h4>
+                <ul id="section5links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section5task"></ol>
             </div>
-
             <div id="listeningSection">
-                <h3>Eshitish mashqi : <a id="lisLink" href="" target="_blank">video linki</a></h3>
-                 
-
-                 <hr>
-                 <h4>Vazifa:</h4>
-                 <ol>
-                    <li>
-                        Bir necha marta eshiting, xotirangizga yoz bolgandek bo'lsin
-                    </li>
-                    <li>Keyin yana bir necha marta eshitish davomida siz ham birga takrorlang gapirishini</li>
-                
-                 </ol>
+                <h3>Eshitish mashqi:</h3>
+                <h4>Linklar</h4>
+                <ul id="section6links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section6task"></ol>
             </div>
         </div>
-        <button type="submit" class="downloadBtn"> download</button>
-    </main>
+        <div class="footer">
 
+            <button type="submit" class="downloadBtn">Download</button>
+            <p><em class="stamp">Ulugbek Norbutaev</em></p>
+        </div>
+    </main>
     <script src="index.js"></script>
 </body>
 

@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const downloadablePage = document.querySelector('.downloadablePage')
+    const downloadablePage = document.querySelector('.downloadablePage');
     const filenameInput = document.getElementById('fileName');
     const vidInput = document.getElementById('GrammarVideoLink');
     const vidLink = document.getElementById('vidLink');
@@ -16,60 +16,75 @@ window.addEventListener('DOMContentLoaded', () => {
     const listeningCheck = document.getElementById('listeningCheck');
     const essayCheck = document.getElementById('matnCheck');
     const downloadButton = document.querySelector(".downloadBtn");
-    const theoryInput = document.getElementById('theory')
-    const theoryPrag = document.getElementById('theoryPrag')
-    const headerTitle = document.getElementById('header')
+    const theoryInput = document.getElementById('theory');
+    const theoryPrag = document.getElementById('theoryPrag');
+    const headerTitle = document.getElementById('header');
 
+    const taskInputs = [
+        { tasks: 'section1Tasks', links: 'section1Links', taskList: 'section1task', linkList: 'section1links' },
+        { tasks: 'section2Tasks', links: 'section2Links', taskList: 'section2task', linkList: 'section2links' },
+        { tasks: 'section3Tasks', links: 'section3Links', taskList: 'section3task', linkList: 'section3links' },
+        { tasks: 'section4Tasks', links: 'section4Links', taskList: 'section4task', linkList: 'section4links' },
+        { tasks: 'section5Tasks', links: 'section5Links', taskList: 'section5task', linkList: 'section5links' },
+        { tasks: 'section6Tasks', links: 'section6Links', taskList: 'section6task', linkList: 'section6links' },
+    ];
 
-     filenameInput.addEventListener('input', (even) => {
-        headerTitle.innerHTML = even.target.value
-     })
+    // Update tasks and links dynamically
+    taskInputs.forEach(({ tasks, links, taskList, linkList }) => {
+        const taskInput = document.getElementById(tasks);
+        const linkInput = document.getElementById(links);
+        const taskListElement = document.getElementById(taskList);
+        const linkListElement = document.getElementById(linkList);
 
+        taskInput.addEventListener('input', (event) => {
+            const tasksArray = event.target.value.split('<>');
+            taskListElement.innerHTML = tasksArray.map(task => `<li>${task}</li>`).join('');
+        });
+
+        linkInput.addEventListener('input', (event) => {
+            const linksArray = event.target.value.split('<>');
+            linkListElement.innerHTML = linksArray.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+        });
+    });
+
+    // Update header title dynamically
+    filenameInput.addEventListener('input', (event) => {
+        headerTitle.innerHTML = event.target.value || 'Day 1';
+    });
+
+    // Handle listening and essay sections dynamically
     if (!listeningCheck.checked) {
-        listeningSection.remove(); 
+        listeningSection.remove();
     }
 
     if (!essayCheck.checked) {
-        essaySection.remove(); 
+        essaySection.remove();
     }
 
     listeningCheck.addEventListener('change', () => {
         if (listeningCheck.checked) {
-            const newSection = document.createElement('div');
-            newSection.id = 'listeningSection';
-            newSection.innerHTML = `
-                <h3>Eshitish mashqi:</h3>
-                <a id="lisLink" href="" target="_blank">video linki</a>
-            `;
-            downloadablePage.appendChild(newSection); 
+            listeningSection.style.display = 'block';
         } else {
-            document.getElementById('listeningSection')?.remove();
+            listeningSection.style.display = 'none';
         }
     });
 
     essayCheck.addEventListener('change', () => {
         if (essayCheck.checked) {
-            const newSection = document.createElement('div');
-            newSection.id = 'essaySection';
-            newSection.innerHTML = `
-                <h3>Matn tuzish:</h3>
-                <p id="essayPrev"></p>
-            `;
-            downloadablePage.appendChild(newSection); 
+            essaySection.style.display = 'block';
         } else {
-            document.getElementById('essaySection')?.remove();
+            essaySection.style.display = 'none';
         }
     });
 
+    // Update grammar and theory sections
     vidInput.addEventListener('input', (event) => {
         vidLink.href = event.target.value;
     });
 
     imageInput.addEventListener('change', (event) => {
         const files = event.target.files;
-
         previewDiv.innerHTML = '';
-
         if (files.length > 0) {
             Array.from(files).forEach((file) => {
                 const imageUrl = URL.createObjectURL(file);
@@ -79,7 +94,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 imgElement.style.maxWidth = "100%";
                 imgElement.style.height = "auto";
                 imgElement.style.marginBottom = "10px";
-
                 previewDiv.appendChild(imgElement);
             });
         } else {
@@ -91,9 +105,9 @@ window.addEventListener('DOMContentLoaded', () => {
         grammarBook.textContent = event.target.value;
     });
 
-    theoryInput.addEventListener('change', (e) => {
-        theoryPrag.textContent = e.target.value
-    })
+    theoryInput.addEventListener('input', (event) => {
+        theoryPrag.textContent = event.target.value;
+    });
 
     essayInput.addEventListener('input', (event) => {
         essayPrev.textContent = event.target.value;
@@ -103,28 +117,37 @@ window.addEventListener('DOMContentLoaded', () => {
         lisLink.href = event.target.value;
     });
 
+    function getCurrentDateTime() {
+        const now = new Date();
+      
+        // Get hours and minutes (0-23, 0-59)
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const fullTime = `${hours}:${minutes}`; 
+      
+        // Get day, month, and year (2-digit day, 2-digit month, 4-digit year)
+        const day = now.getDate().toString().padStart(2, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
+        const year = now.getFullYear();
+        const fullDate = `${day}:${month}:${year}`;
+      
+        return {
+          fullTime: fullTime,
+          fullDate: fullDate
+        };
+      }
+
+    // Download page as PDF
     downloadButton.addEventListener('click', () => {
-        const pageToDownload = document.querySelector(".downloadablePage");
+        const dateTime = getCurrentDateTime()
+        document.querySelector(".stamp").textContent = `Ulugbek Norbutaev -  ${dateTime.fullTime} ,  ${dateTime.fullDate}`
         const options = {
-            filename: `${filenameInput.value}.pdf`,
+            filename: `${filenameInput.value || 'Day_1'}.pdf`,
             image: { type: "jpeg", quality: 0.85 },
-            html2canvas: {
-                scale: 5,
-                logging: true,
-                letterRendering: true,
-                useCORS: true,
-            },
-            jsPDF: {
-                unit: "in",
-                format: "letter",
-                orientation: "portrait",
-            },
+            html2canvas: { scale: 5, useCORS: true },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
         };
 
-        html2pdf()
-            .set(options)
-            .from(pageToDownload)
-            .toPdf()
-            .save();
+        html2pdf().set(options).from(downloadablePage).save();
     });
 });
