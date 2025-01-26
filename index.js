@@ -63,17 +63,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
     listeningCheck.addEventListener('change', () => {
         if (listeningCheck.checked) {
-            listeningSection.style.display = 'block';
+            downloadablePage.innerHTML += `<div id="listeningSection">
+                <h3>Eshitish mashqi:</h3>
+                <h4>Linklar</h4>
+                <ul id="section6links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section6task"></ol>
+            </div>`
         } else {
-            listeningSection.style.display = 'none';
+            listeningSection.remove();
         }
     });
 
     essayCheck.addEventListener('change', () => {
         if (essayCheck.checked) {
-            essaySection.style.display = 'block';
+            downloadablePage.innerHTML += `<div id="essaySection">
+                <h3>Matn tuzish:</h3>
+                <p id="essayPrev"></p>
+                <h4>Linklar</h4>
+                <ul id="section5links"></ul>
+                <h4>Vazifalar:</h4>
+                <ol id="section5task"></ol>
+            </div>`
         } else {
-            essaySection.style.display = 'none';
+            essaySection.remove()
         }
     });
 
